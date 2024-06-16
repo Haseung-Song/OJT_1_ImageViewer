@@ -1,4 +1,4 @@
-# [OJT Project]_ImageViewer(이미지 뷰어) 프로젝트
+# [OJT Project]_Image_Viewer(이미지_뷰어) 프로젝트
 
 
 ## 1. 사용 언어, [UI], 사용 기술

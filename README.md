@@ -17,10 +17,9 @@
    <2> RelayCommand.cs 파일
    - ICommand를 상속 받아 UI에서 이벤트 받아 처리하는 함수 구현 1
 
-     
+
 ### 2) [Models]_Folder
-   <1> ImageFS.cs 파일
-   - Property (이미지)
+   <1> ImageFS.cs 파일 (이미지 Property)
    * 파일 경로
    * 파일 이름
    * 생성 일자

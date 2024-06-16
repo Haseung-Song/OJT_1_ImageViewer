@@ -1,0 +1,190 @@
+﻿<Window x:Class="OJT_1_ImageViewer.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" 
+        Width="1200"
+        Height="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Border BorderBrush ="DarkGray" 
+                    BorderThickness="2" 
+                    Margin="4,20,4,4" 
+                    Width="740" 
+                    Height="35">
+                <TextBlock Text="{Binding FolderPathInfo}" 
+                           TextAlignment="Left" 
+                           Margin="5,5,0,0" 
+                           FontSize="15"/>
+            </Border>
+            <Button Content="폴더 불러오기" 
+                    Command="{Binding LoadFolderCommand}" 
+                    Margin="5,15,0,0" 
+                    Height="30" 
+                    Width="135" 
+                    FontSize="15"/>
+            <Button Content="이미지 복원" 
+                    IsEnabled="{Binding ButtonEnabledOrNot}"
+                    Command="{Binding RestoreImageCommand}" 
+                    Margin="10,15,0,0" 
+                    Height="30" 
+                    Width="135" 
+                    FontSize="15"/>
+            <Button Content="파일 초기화" 
+                    IsEnabled="{Binding ButtonEnabledOrNot}"
+                    Command="{Binding ResetFileCommand}" 
+                    Margin="10,15,0,0" 
+                    Height="30" 
+                    Width="135" 
+                    FontSize="15"/>
+        </StackPanel>
+        <Border Grid.Row="1"
+                Grid.ColumnSpan="3"
+                BorderBrush ="Black"
+                BorderThickness="2"
+                Margin="5, 10, 5, 5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <ListBox SelectedItem="{Binding SelectedImage}" 
+                         ItemsSource="{Binding ImageCollection}" 
+                         HorizontalAlignment="Stretch" 
+                         VerticalAlignment="Stretch">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0"
+                                            BorderBrush="DarkGray"
+                                            BorderThickness="1"
+                                            CornerRadius="10"
+                                            Width="390"
+                                            Height="95">
+                                    <Grid>
+                                        <Border Grid.Column="0"
+                                                Grid.RowSpan="3"
+                                                BorderBrush="DarkGray"
+                                                BorderThickness="1"
+                                                CornerRadius="10"
+                                                Width="120"
+                                                Height="80"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                Margin="5,0,5,0">
+                                         <Image Source="{Binding FilePathInfo}"/>
+                                        </Border>
+                                        <TextBlock Text="{Binding FileNameInfo}"
+                                                   Foreground="Gray"
+                                                   FontWeight="Bold"
+                                                   Grid.Column="1"
+                                                   Grid.Row="0"
+                                                   Margin="5,10,0,0"/>
+                                        <TextBlock Text="{Binding CreationTime}"
+                                                   Foreground="Gray"
+                                                   FontWeight="Bold"
+                                                   Grid.Column="1"
+                                                   Grid.Row="1"
+                                                   Margin="5,10,0,0"/>
+                                        <TextBlock Text="{Binding FileSizeByte}"
+                                                   Foreground="Gray"
+                                                   FontWeight="Bold"
+                                                   Grid.Column="1"
+                                                   Grid.Row="2"
+                                                   Margin="5,5,0,0"/>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <StackPanel Grid.Column="1" 
+                            Orientation="Horizontal" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Bottom">
+                    <Button Content="확대" 
+                            IsEnabled="{Binding ButtonEnabledOrNot}"
+                            Command="{Binding ZoomInCommand}" 
+                            Margin="5, 0, 10, 15" 
+                            Height="30" 
+                            Width="140" 
+                            FontSize="15"/>
+                    <Button Content="축소" 
+                            IsEnabled="{Binding ButtonEnabledOrNot}"
+                            Command="{Binding ZoomOutCommand}" 
+                            Margin="0, 0, 10, 15" 
+                            Height="30" 
+                            Width="140" 
+                            FontSize="15"/>
+                    <Button Content="왼쪽 15°" 
+                            IsEnabled="{Binding ButtonEnabledOrNot}"
+                            Command="{Binding RtLeftCommand}" 
+                            Margin="0, 0, 10, 15" 
+                            Height="30" 
+                            Width="140" 
+                            FontSize="15"/>
+                    <Button Content="오른쪽 15°" 
+                            IsEnabled="{Binding ButtonEnabledOrNot}"
+                            Command="{Binding RtRightCommand}" 
+                            Margin="0, 0, 10, 15" 
+                            Height="30" 
+                            Width="140" 
+                            FontSize="15"/>
+                    <Button Content="좌우 반전" 
+                            IsEnabled="{Binding ButtonEnabledOrNot}"
+                            Command="{Binding RtInversionCommand}" 
+                            Margin=" 0, 0, 5, 15" 
+                            Height="30" 
+                            Width="140" 
+                            FontSize="15"/>
+                </StackPanel>
+                <Border Grid.Column="0"
+                        BorderBrush ="DarkGray"
+                        BorderThickness="1">
+                </Border>
+                <Border Grid.Column="1"
+                        BorderBrush ="DarkGray"
+                        BorderThickness="0"
+                        MaxWidth="700"
+                        MaxHeight="700">
+                    <ScrollViewer Grid.Column="1"
+                                  VerticalAlignment="Stretch"
+                                  HorizontalAlignment="Stretch"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Auto"
+                                  Margin="0,50,0,100">
+                        <Image Source="{Binding SelectedImage.FilePathInfo}" MaxWidth="700" MaxHeight="700">
+                            <Image.LayoutTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="{Binding ScaleX}" 
+                                                    ScaleY="{Binding ScaleY}"/>
+                                    <RotateTransform Angle="{Binding RotateAngle}"/>
+                                </TransformGroup>
+                            </Image.LayoutTransform>
+                        </Image>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

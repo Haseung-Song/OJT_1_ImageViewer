@@ -110,9 +110,7 @@
 
 
 ## 6. [App] 실행 시, 기능 녹화
-Uploading OJT_1_ImageViewer 프로젝트 기능 녹화 영상.mp4…
-
-
+https://github.com/Haseung-Song/OJT_1_ImageViewer/assets/63398933/c82ab743-6364-4b69-b27c-77332b062677
 
 
 

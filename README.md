@@ -110,6 +110,9 @@
 
 
 ## 6. [App] 실행 시, 기능 녹화
+Uploading OJT_1_ImageViewer 프로젝트 기능 녹화 영상.mp4…
+
+
 
 
 

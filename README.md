@@ -103,13 +103,13 @@
 
 
 
-## 5. [App] 실행 시, 초기 화면
+## 5. [App] 실행 후 초기 화면
 <img width="891" alt="이미지 뷰어 초기 화면" src="https://github.com/Haseung-Song/OJT_1_ImageViewer/assets/63398933/22162013-7c80-43c7-a712-279260156c45">
 
 
 
 
-## 6. [App] 실행 시, 기능 녹화
+## 6. [App] 실행 후 기능 녹화
 https://github.com/Haseung-Song/OJT_1_ImageViewer/assets/63398933/c82ab743-6364-4b69-b27c-77332b062677
 
 

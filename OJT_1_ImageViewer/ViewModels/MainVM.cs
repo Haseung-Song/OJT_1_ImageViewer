@@ -1,51 +1,164 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
 using OJT_1_ImageViewer.Common;
 using OJT_1_ImageViewer.Models;
-using Soletop.DataModel;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 namespace OJT_1_ImageViewer.ViewModels
 {
-    public class MainVM : PropertyModel
+    public class MainVM : INotifyPropertyChanged
     {
         #region [프로퍼티]
 
+        private bool _buttonEnabledOrNot;
+        private string _folderPathInfo;
+
+        private ObservableCollection<ImageFS> _imageCollection;
+        private ImageFS _selectedImage;
+
+        private double _scaleX;
+        private double _scaleY;
+        private double _rotateAngle;
+
+        #endregion
+
+        #region [OnPropertyChanged]
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
-        /// [EnabledOrNot]
+        /// [ButtonEnabledOrNot]
         /// </summary>
-        public bool ButtonEnabledOrNot { get => (bool)this["ButtonEnabledOrNot"]; set => this["ButtonEnabledOrNot"] = value; }
+        public bool ButtonEnabledOrNot
+        {
+            get => _buttonEnabledOrNot;
+            set
+            {
+                if (_buttonEnabledOrNot != value)
+                {
+                    _buttonEnabledOrNot = value;
+                    OnPropertyChanged();
+                }
+
+            }
+
+        }
 
         /// <summary>
         /// [FolderPathInfo]
         /// </summary>
-        public string FolderPathInfo { get => (string)this["FolderPathInfo"]; set => this["FolderPathInfo"] = value; }
+        public string FolderPathInfo
+        {
+            get => _folderPathInfo;
+            set
+            {
+                if (_folderPathInfo != value)
+                {
+                    _folderPathInfo = value;
+                    OnPropertyChanged();
+                }
+
+            }
+
+        }
 
         /// <summary>
         /// [ImageCollection]
         /// </summary>
-        public ObservableCollection<ImageFS> ImageCollection { get => (ObservableCollection<ImageFS>)this["ImageCollection"]; set => this["ImageCollection"] = value; }
+        public ObservableCollection<ImageFS> ImageCollection
+        {
+            get => _imageCollection;
+            set
+            {
+                if (_imageCollection != value)
+                {
+                    _imageCollection = value;
+                    OnPropertyChanged();
+                }
+
+            }
+
+        }
 
         /// <summary>
-        /// SelectedImage
+        /// [SelectedImage]
         /// </summary>
-        public ImageFS SelectedImage { get => (ImageFS)this["SelectedImage"]; set => this["SelectedImage"] = value; }
+        public ImageFS SelectedImage
+        {
+            get => _selectedImage;
+            set
+            {
+                if (_selectedImage != value)
+                {
+                    _selectedImage = value;
+                    OnPropertyChanged();
+                }
+
+            }
+
+        }
 
         /// <summary>
         /// [ScaleX]
         /// </summary>
-        public double ScaleX { get => (double)this["ScaleX"]; set => this["ScaleX"] = value; }
+        public double ScaleX
+        {
+            get => _scaleX;
+            set
+            {
+                if (_scaleX != value)
+                {
+                    _scaleX = value;
+                    OnPropertyChanged();
+                }
+
+            }
+
+        }
 
         /// <summary>
         /// [ScaleY]
         /// </summary>
-        public double ScaleY { get => (double)this["ScaleY"]; set => this["ScaleY"] = value; }
+        public double ScaleY
+        {
+            get => _scaleY;
+            set
+            {
+                if (_scaleY != value)
+                {
+                    _scaleY = value;
+                    OnPropertyChanged();
+                }
+
+            }
+
+        }
 
         /// <summary>
         /// [RotateAngle]
         /// </summary>
-        public double RotateAngle { get => (double)this["RotateAngle"]; set => this["RotateAngle"] = value; }
+        public double RotateAngle
+        {
+            get => _rotateAngle;
+            set
+            {
+                if (_rotateAngle != value)
+                {
+                    _rotateAngle = value;
+                    OnPropertyChanged();
+                }
+
+            }
+
+        }
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         #endregion
 
